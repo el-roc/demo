@@ -7,31 +7,52 @@ module.exports = function(app, passport, db) {
         res.render('index.ejs');
     });
 
-    // PROFILE SECTION =========================
+    // USER SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
-      if(req.user.local.email){
-        //console.log(req.user.local)
         db.collection('messages').find().toArray((err, result) => {
-          //console.log(result)
-          console.log(req)
           if (err) return console.log(err)
           res.render('profile.ejs', {
-            user: req.user,
+            user : req.user,
             messages: result
           })
         })
-      }
     });
 
-  //   app.get(`/profile${user.local.email}`, isLoggedIn, function(req, res) {
-  //     db.collection('messages').find().toArray((err, result) => {
-  //       if (err) return console.log(err)
-  //       res.render('profile.ejs', {
-  //         user : req.user,
-  //         messages: result
-  //       })
-  //     })
-  // });
+    // PARKS SECTION =========================
+
+    app.get('/parks', isLoggedIn, function(req, res) {
+      db.collection('messages').find().toArray((err, result) => {
+        if (err) return console.log(err)
+        res.render('parks.ejs', {
+          user : req.user,
+          messages: result
+        })
+      })
+  });
+
+  // FAVORITES SECTION =========================
+
+  app.get('/favorites', isLoggedIn, function(req, res) {
+    db.collection('messages').find().toArray((err, result) => {
+      if (err) return console.log(err)
+      res.render('favorites.ejs', {
+        user : req.user,
+        messages: result
+      })
+    })
+});
+
+  // MAP SECTION =========================
+
+  app.get('/map', isLoggedIn, function(req, res) {
+    db.collection('messages').find().toArray((err, result) => {
+      if (err) return console.log(err)
+      res.render('map.ejs', {
+        // user : req.user,
+        // messages: result
+      })
+    })
+});
 
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {
@@ -42,7 +63,7 @@ module.exports = function(app, passport, db) {
 // message board routes ===============================================================
 
     app.post('/messages', (req, res) => {
-      db.collection('messages').save({name: req.body.name, msg: req.body.msg, thumbUp: 0, thumbDown:0}, (err, result) => {
+      db.collection('messages').save({name: req.body.name, msg: req.body.msg, workout: req.body.workout, thumbUp: 0, thumbDown:0, favorite: "(Click to Save)"}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/profile')
@@ -54,6 +75,37 @@ module.exports = function(app, passport, db) {
       .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
         $set: {
           thumbUp:req.body.thumbUp + 1
+        }
+      }, {
+        sort: {_id: -1},
+        upsert: true
+      }, (err, result) => {
+        if (err) return res.send(err)
+        res.send(result)
+      })
+    })
+
+    app.put('/messages', (req, res) => {
+      db.collection('messages')
+      .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
+        $set: {
+          thumbUp:req.body.thumbUp + 1,
+          favorite: "Saved"
+        }
+      }, {
+        sort: {_id: -1},
+        upsert: true
+      }, (err, result) => {
+        if (err) return res.send(err)
+        res.send(result)
+      })
+    })
+    
+    app.put('/thumbDown', (req, res) => {
+      db.collection('messages')
+      .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
+        $set: {
+          thumbUp:req.body.thumbUp - 1
         }
       }, {
         sort: {_id: -1},

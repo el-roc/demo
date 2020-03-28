@@ -1,70 +1,88 @@
 <!doctype html>
 <html>
+
 <head>
-    <title>21 Savage Fan Site</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
+  <title>Parks and Recreation</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="container">
+  <section>
+    <p>This Page will be where the user will post park location information and workouts into the database. 
+      As well as put any changes or updates back into into the DB. The user information is displayed as well as 
+      the liked workouts and liked locations.
+    </p>
+  </section>
+  <div class="container">
 
     <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+      <h1>User Profile Page</h1>
+      <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
 
     <div class="row">
 
-        <!-- LOCAL INFORMATION -->
-        <div class="col-sm-6">
-            <div class="well">
-                <h3><span class="fa fa-user"></span> Local</h3>
+      <!-- LOCAL INFORMATION -->
+      <div class="col-sm-6">
+        <div class="well">
+          <h3><span class="fa fa-user"></span> Local</h3>
 
-                <% if (user.local.email) { %>
-                    <p>
-                        <strong>id</strong>: <%= user._id %><br>
-                        <strong>email</strong>: <%= user.local.email %><br>
-                        <strong>password</strong>: <%= user.local.password %>
-                    </p>
+          <% if (user.local.email) { %>
+          <p>
+            <strong>id</strong>: <%= user._id %><br>
+            <strong>email</strong>: <%= user.local.email %><br>
+            <strong>password</strong>: <%= user.local.password %>
+          </p>
 
-                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
-                <% } else { %>
-                    <a href="/connect/local" class="btn btn-default">Connect Local</a>
-                <% } %>
-
-            </div>
-        </div>
-        <div class="col-sm-6">
-          <h3>Messages</h3>
-          <ul class="messages">
-          <% for(var i=0; i<messages.length; i++) {%>
-           <% if(messages[i].name === user.local.email ) {%>
-            <li class="message">
-              <span><%= messages[i].name %></span>
-              <span><%= messages[i].msg %></span>
-              <span><%= messages[i].thumbUp %></span>
-              <span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
-              <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
-              <span><i class="fa fa-trash" aria-hidden="true"></i></span>
-            </li>
-            <% } %>
+          <a href="/unlink/local" class="btn btn-default">Unlink</a>
+          <% } else { %>
+          <a href="/connect/local" class="btn btn-default">Connect Local</a>
           <% } %>
-          </ul>
 
-          <h2>Add a message</h2>
-        <% if (user.local.email) { %>
-          <form action="/messages" method="POST">
-            <input type="text" value="<%= user.local.email %>" name="name">
-            <input type="text" placeholder="message" name="msg">
-            <button type="submit">Submit</button>
-          </form>
         </div>
-        <% } %>
+      </div>
+      <div class="col-sm-6">
+        <h3>Messages</h3>
+        <ul class="messages">
+          <% for(var i=0; i< messages.length; i++) {%>
+          <% if (user.local.email == messages[i].name) { %>
+          <li class="message">
+            <span><%= messages[i].name%></span>
+            <span><%= messages[i].msg %></span>
+            <span><%= messages[i].workout %></span>
+            <span><%= messages[i].favorite %></span>
+            <span><%= messages[i].thumbUp -= messages[i].thumbDown %></span>
+            <span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+            <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+            <span><i class="fa fa-trash" aria-hidden="true"></i></span>
+          </li>
+          <% } %>
+          <% } %>
+        </ul>
 
-</div>
-
-<script src="main.js"></script>
+        <h2>Add Park Information</h2>
+        <% if (user.local.email) { %>
+        <form action="/messages" method="POST">
+          <input type="text" value="<%= user.local.email %>" name="name">
+          <input type="text" placeholder="Name of Park" name="msg">
+          <input type="text" placeholder="Workout" name="workout">
+          <button type="submit">Submit</button>
+        </form>
+        <section id="explainPost">/// Here There will probably be a second form and it will be linked to a 
+          DB that will have more specific Information to the park including directions,photos, and information.
+           All this Information will Appear on the Forum Page where others can comment on. 
+        </section>
+      </div>
+      <% } %>
+      <a href="/parks" class="btn btn-default"><span class="fa fa-user"></span>To Parks Forum</a>
+        <a href="/map" class="btn btn-default"><span class="fa fa-user"></span>To Maps</a>
+        <a href="/favorites" class="btn btn-default"><span class="fa fa-user"></span>To User Favorites</a>
+    </div>
+    <script src="https://kit.fontawesome.com/077191d827.js" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
 
 </body>
+
 </html>

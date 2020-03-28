@@ -5,3 +5,24 @@ body{
 img{
   height: 200px;
 }
+#map{
+  height: 444px;
+  width: 100%;
+  border: 2px solid black;
+  background-image: url(img/mapboston.png);
+  background-size: cover;
+}
+div .container2{
+  align-content: center;
+}
+#zipcode{
+  align-content: center;
+}
+h1{
+  text-align: center;
+}
+#explainMaps{
+  border: 2px solid black;
+  height: 100px;
+  width: 100%;
+}
