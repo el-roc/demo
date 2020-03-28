@@ -1,6 +1,8 @@
 body{
   padding-top:80px;
   word-wrap:break-word;
+  color: rgba(253, 253, 253, 0.959);
+  background-color: rgb(3, 54, 3);
 }
 img{
   height: 200px;
@@ -25,4 +27,12 @@ h1{
   border: 2px solid black;
   height: 100px;
   width: 100%;
+}
+div .jumbotron.text-center{
+  color: rgb(7, 10, 161);
+  background-color: rgb(184, 184, 8);
+  
+}
+div.well{
+  color:black;
 }

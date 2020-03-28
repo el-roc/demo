@@ -5,14 +5,19 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/077191d827.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="pages.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <section id="explainPage">
+        This Page will show a specific users favorite park locations and their favorite workouts.
+        Here they can delete the items in their favorites but not actually be deleted from the DB.
+        
+    </section>
 <div class="container">
 
     <div class="page-header text-center">
       <!-- <span class="fa fa-anchor"></span>   -->
-      <h1> Your Jokes</h1>
+      <h1>Favorites Page</h1>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
 
@@ -21,7 +26,7 @@
             </div>
         </div>
         <div class="col-sm-6">
-          <h3>Your Personal Jokes</h3>
+          <h3>Your Favorite Parks</h3>
           <h4>Click the Thumb Up Icon to Save your Favorite Jokes!</h4>
           <ul class="messages">
           <% for(var i=0; i<messages.length; i++) {%>
@@ -40,16 +45,16 @@
           <% } %>
           </ul>
 
-          <h2>Add a message</h2>
+          
         <% if (user.local.email) { %>
-          <form action="/messages" method="POST">
-            <input type="text" value="<%= user.local.email %>" name="name">
-            <input type="text" placeholder="JOKES" name="msg">
+          <!-- <form action="/messages" method="POST"> -->
+            <!-- <input type="text" value="<%= user.local.email %>" name="name">
+            <input type="text" placeholder="JOKES" name="msg"> -->
             <!-- <input type="text" placeholder="collection" name="collection">
             <input type="text" placeholder="file" name="file"> -->
             
-            <button type="submit">Submit</button>
-          </form>
+            <!-- <button type="submit">Submit</button> -->
+          <!-- </form> -->
         </div>
         <% } %>
         <a href="/parks" class="btn btn-default"><span class="fa fa-user"></span>To Parks Forum</a>
