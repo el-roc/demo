@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.2.1/css/ol.css" type="text/css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      .map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.2.1/build/ol.js"></script>
+    <title>OpenLayers Map Boston</title>
+  </head>
+  <body>
+    <h2>Map to Parks</h2>
+    <h3> <a href="https://www.google.com/maps/"> Link To Google Maps </a> </h3>
+    <div id="map" class="map"></div>
+    <script type="text/javascript">
+      var map = new ol.Map({
+        target: 'map',
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM()
+          })
+        ],
+        view: new ol.View({
+          center: ol.proj.fromLonLat([-71.0602778, 42.3583333]),
+          zoom: 12
+        })
+      });
+      
+    </script>
+     <a href="/profile" class="btn btn-default"><span class="fa fa-user"></span>To User Profile</a>
+     <a href="/parks" class="btn btn-default"><span class="fa fa-user"></span>To Parks Forum</a>
+     <a href="/favorites" class="btn btn-default"><span class="fa fa-user"></span>To User Favorites</a>
+    <script src="main.js"></script>
+  </body>
+</html>

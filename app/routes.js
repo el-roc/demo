@@ -54,6 +54,16 @@ module.exports = function(app, passport, db) {
     })
 });
 
+  app.get('/new-map', isLoggedIn, function(req, res) {
+    db.collection('messages').find().toArray((err, result) => {
+      if (err) return console.log(err)
+      res.render('new-map.ejs', {
+        // user : req.user,
+        // messages: result
+      })
+    })
+  });
+
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {
         req.logout();
@@ -74,7 +84,8 @@ module.exports = function(app, passport, db) {
       db.collection('messages')
       .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
         $set: {
-          thumbUp:req.body.thumbUp + 1
+          thumbUp:req.body.thumbUp + 1,
+          favorite: "Saved"
         }
       }, {
         sort: {_id: -1},

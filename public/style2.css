@@ -1,0 +1,10 @@
+body{
+    background-image: url(img/lighthouse.jpeg);
+    background-size: cover;
+}
+/* div .col-sm-6{
+    background-color: white;
+} */
+#whiteSpace{
+    background-color: white;
+}
