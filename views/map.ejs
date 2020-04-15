@@ -2,6 +2,13 @@
 <html>
 
 <head>
+  <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+	
   <title>Parks and Recreation</title>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
@@ -9,30 +16,15 @@
 </head>
 
 <body>
-    <Section id="explainMaps">
-        <p> This Page will use a map api to find your Location based on the zip code you enter(limit to boston area).
-            After the location is updated, parks that were entered by users will appear on the map based on the
-            information sent to the Database(lattitde & longitude). you can click on the pins and it will take you to the "/parks pg", specifically the section that shows the location that was clicked.
-        </p>
-    </Section>    
-    <!-- <span class="fa fa-anchor"></span> -->
-    <div class="page-header text-center">
-      <h1>Maps Page</h1>
-      <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-    </div>
+  <%= mapInfo.coordinates[0] %>
+  <div id="mapid" style="width: 100%; height: 400px;"></div>
 
-    <h1>Find Your Local Parks</h1>
-        <div class="container2">
-        <input id="zipcode" type="text" placeholder="ZipCode">
-        <a href="/profile" class="btn btn-default"><span class="fa fa-user"></span>To User Profile</a>
-        <a href="/parks" class="btn btn-default"><span class="fa fa-user"></span>To Parks Forum</a>
-        <a href="/favorites" class="btn btn-default"><span class="fa fa-user"></span>To User Favorites</a>
-        <section id="map">  alt="Map of Boston"> </section>
-    
-    </div>
-    
+    <a href="/parks" class="btn btn-default"><span class="fa fa-user"></span>To Parks Forum</a>
+    <a href="/profile" class="btn btn-default"><span class="fa fa-user"></span>To Profile</a>
+    <a href="/favorites" class="btn btn-default"><span class="fa fa-user"></span>To User Favorites</a>
+
     <script src="https://kit.fontawesome.com/077191d827.js" crossorigin="anonymous"></script>
-    <script src="main.js"></script>
+    <script src="mapmain.js"></script>
 </body>
 
 </html>

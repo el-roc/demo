@@ -47,11 +47,31 @@ module.exports = function(app, passport, db) {
   app.get('/map', isLoggedIn, function(req, res) {
     db.collection('messages').find().toArray((err, result) => {
       if (err) return console.log(err)
+      // query db to get the park information
       res.render('map.ejs', {
         // user : req.user,
         // messages: result
+        user: req.user,
+        mapInfo: {
+          coordinates: [-71, 41]
+        }
       })
     })
+});
+
+
+app.get('/map/:mapid', isLoggedIn, function(req, res) {
+  db.collection('messages').find().toArray((err, result) => {
+    if (err) return console.log(err)
+    // query db to get the park information by mapid
+    res.render('map.ejs', {
+      // user : req.user,
+      // messages: result
+      mapInfo: {
+        coordinates: [-71, 41]
+      }
+    })
+  })
 });
 
   app.get('/new-map', isLoggedIn, function(req, res) {
