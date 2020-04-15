@@ -1,4 +1,4 @@
-module.exports = function(app, passport, db) {
+module.exports = function(app, passport, db, ObjectId) {
 
 // normal routes ===============================================================
 
@@ -29,6 +29,28 @@ module.exports = function(app, passport, db) {
         })
       })
   });
+
+  // INDIVIDUAL PARKS SECTION =========================
+  
+  app.get('/individualpark', isLoggedIn, function(req, res) {
+    // console.log(req.query.id)
+    let parkId = ObjectId(req.query.id)
+    console.log(parkId)
+    db.collection('messages').find({'parkId': parkId}).toArray((err, result) => {
+      if (err) return console.log(err)
+      // console.log(result)
+      db.collection('parks').find({'_id': parkId}).toArray((err, parkResult)=>{
+        console.log(parkResult)
+        console.log(parkResult[0].name)
+      if (err) return console.log(err)
+      res.render('individualpark.ejs', {
+        user : req.user,
+        messages: result,
+        parks: parkResult
+      })
+    })
+    })
+});
 
   // FAVORITES SECTION =========================
 
@@ -92,8 +114,32 @@ app.get('/map/:mapid', isLoggedIn, function(req, res) {
 
 // message board routes ===============================================================
 
+    // app.post('/specificmessages', (req, res) => {
+    //   db.collection('messages').save({
+    //     name: req.body.name,
+    //     msg: req.body.msg,
+    //     workout: req.body.workout,
+    //     thumbUp: 0, thumbDown:0,
+    //     favorite: "(Click to Save)", 
+    //     parkId: ObjectId(req.body.individualId),
+    //   userId: ObjectId(req.user._id)},
+    //     (err, result) => {
+    //     if (err) return console.log(err)
+    //     console.log('saved to database')
+    //     res.redirect('/individualpark')
+    //   })
+    // })
+
     app.post('/messages', (req, res) => {
-      db.collection('messages').save({name: req.body.name, msg: req.body.msg, workout: req.body.workout, thumbUp: 0, thumbDown:0, favorite: "(Click to Save)"}, (err, result) => {
+      db.collection('messages').save({
+        name: req.body.name,
+        msg: req.body.msg,
+        workout: req.body.workout,
+        thumbUp: 0, thumbDown:0,
+        favorite: "(Click to Save)", 
+        parkId: ObjectId(req.body.individualId),
+      userId: ObjectId(req.user._id)},
+        (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/profile')
@@ -148,7 +194,11 @@ app.get('/map/:mapid', isLoggedIn, function(req, res) {
     })
 
     app.delete('/messages', (req, res) => {
-      db.collection('messages').findOneAndDelete({name: req.body.name, msg: req.body.msg}, (err, result) => {
+      console.log(req.user._id)
+      db.collection('messages').findOneAndDelete({
+        name: req.body.name,
+         msg: req.body.msg,
+        userId: req.user._id}, (err, result) => {
         if (err) return res.send(500, err)
         res.send('Message deleted!')
       })

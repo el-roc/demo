@@ -14,19 +14,19 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 }).addTo(mymap);
 
     L.marker([42.3557,-71.0647]).addTo(mymap)
-    .bindPopup("<b>Hello boston!</b><br /><a href='https://www.google.com/maps/dir//Boston+Common,+Tremont+Street,+Boston,+MA/@42.359948,-71.0971613'>Boston Common</a>").openPopup();
+    .bindPopup("<a href='/individualpark?id=5e9720921c9d4400007359d5' id='5e9720921c9d4400007359d5'><b>The Boston Common</b><br /><a/><a href='https://www.google.com/maps/dir//Boston+Common,+Tremont+Street,+Boston,+MA/@42.359948,-71.0971613'>Directions to the Boston Common</a>").openPopup();
 
     L.marker([42.316667, -71.120278]).addTo(mymap)
-    .bindPopup("<b>Hello boston!</b><br /><a href='https://www.google.com/maps/dir//Jamaica+Pond,+Boston,+MA/@42.3172192,-71.1553617'>Jamaica Pond</a>").openPopup();
+    .bindPopup("<a href='/individualpark?id=5e9736771c9d4400007359d6' id='5e9736771c9d4400007359d6'><b>The Jamaica Pond</b><br /></a><a href='https://www.google.com/maps/dir//Jamaica+Pond,+Boston,+MA/@42.3172192,-71.1553617'>Directions to Jamaica Pond</a>").openPopup();
 
     L.marker([42.2810139,-71.1792237]).addTo(mymap)
-    .bindPopup("<b>Hello boston!</b><br /><a href='https://www.google.com/maps/dir//Millennium+Park,+Boston,+MA/@42.2810682,-71.2120544'>Millenium Park</a>").openPopup();
+    .bindPopup("<a href='/individualpark'><b>Millenium Park</b><br /></a><a href='https://www.google.com/maps/dir//Millennium+Park,+Boston,+MA/@42.2810682,-71.2120544'>Direction to Millenium Park</a>").openPopup();
 
     // const [x, y] = BOSTON;
     // const BROOKLINE = [x-0.1, y]
     
     L.marker([42.3423, -71.093]).addTo(mymap)
-    .bindPopup("<b>Hello boston!</b><br /><a href='https://www.google.com/maps/dir//Clemente+Field,+Boston,+MA/@42.3408147,-71.1325221'>Fens in Fenway</a>.").openPopup();
+    .bindPopup("<a href='/individualpark?id=5e9736de1c9d4400007359d7' id='5e9736de1c9d4400007359d7'><b>The Fens</b><br /></a><a href='https://www.google.com/maps/dir//Clemente+Field,+Boston,+MA/@42.3408147,-71.1325221'>Direction to Fens in Fenway</a>.").openPopup();
    
 // L.circle(BOSTON, 500, {
 //     color: 'red',
