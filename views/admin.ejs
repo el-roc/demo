@@ -6,23 +6,32 @@
 <body>
     <h1>hey</h1>
     <ul class="pending">
-        <% for(var i=0; i< result.length; i++) {%>
+        <% for(var i=0; i<result.length; i++) {%>
         
         <li class="location">
-          <h3><%= result[i].name%></h3>
+          <h3 data-name="<%= result[i].name%>"><%= result[i].name%></h3>
           <label for="">Lattitude</label>
-          <section><%= result[i].coordinates.lat %></section>
+          <section data-lat="<%= result[i].lat%>"><%= result[i].coordinates.lat %></section>
           <label for="">Longitude</label>
-          <section><%= result[i].coordinates.lng %></section>
-
+          <section data-lng="<%= result[i].lng%>"><%= result[i].coordinates.lng %></section>
+          <button data-keep="location.keep" class="keep">Keep</button>
+          <button data-discard="location.discard" class="discard">Discard</button>
+          <h3 data-name="<%= result[i].name%>" style="visibility:hidden;"><%= result[i]._id%></h3>
         </li>
         <% } %>
        
       </ul>
-      
+      <section>
+        <!-- <button class="keep">Keep</button>
+        <button class="discard">Discard</button> -->
+        <button data-submit="location.aprrovePending" class="aprrovePending">Submit</button>
+
+      </section>
       <a href="/profile" class="btn btn-default"><span class="fa fa-user"></span>To User Profile</a>
       <a href="/map" class="btn btn-default"><span class="fa fa-user"></span>To Maps</a>
       <a href="/favorites" class="btn btn-default"><span class="fa fa-user"></span>To User Favorites</a>
+
+      <script src="admin.js"></script>
 </body>
 
 </html>

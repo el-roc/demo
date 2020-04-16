@@ -16,6 +16,7 @@
 </head>
 
 <body>
+  <!-- <p><%= locations %></p> -->
   <div class="location-data" style="visibility:hidden"><%= locations %></div>
   <div id="mapid" style="width: 65%; height: 400px;"></div>
   <form action="/mark" method="POST">
@@ -28,7 +29,13 @@
     <a href="/parks" class="btn btn-default"><span class="fa fa-user"></span>To Parks Forum</a>
     <a href="/profile" class="btn btn-default"><span class="fa fa-user"></span>To Profile</a>
     <a href="/favorites" class="btn btn-default"><span class="fa fa-user"></span>To User Favorites</a>
-
+    <%
+    console.log("is admin?",user.local, user.local.admin)
+    if(user.local.admin){ %>
+    <a href="/admin" class="btn btn-default"><span class="fa fa-user"></span>To Admin Page</a>
+    <%}else{
+      console.log("nope!:")
+    } %> 
     <script src="https://kit.fontawesome.com/077191d827.js" crossorigin="anonymous"></script>
     <script src="mapmain.js"></script>
 </body>

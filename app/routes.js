@@ -53,9 +53,9 @@ module.exports = function(app, passport, db, ObjectId) {
 });
   // ADMIN SECTION =========================
   app.get('/admin', isLoggedIn, function(req, res) {
-    db.collection('pending').find().toArray((err, result) => {
+    db.collection('parks').find({approved: false}).toArray((err, result) => {
       if (err) return console.log(err)
-      console.log("the pending result", result)
+      console.log("the parks result", result)
       res.render('admin.ejs', {
         result: result
         // name: result.name,
@@ -76,48 +76,89 @@ module.exports = function(app, passport, db, ObjectId) {
 });
 
   // MAP SECTION =========================
+  const fs = require('fs');
 
   app.get('/map', isLoggedIn, function(req, res) {
-    db.collection('messages').find().toArray((err, result) => {
-      if (err) return console.log(err)
-      // query db to get the park information
-      let locationsInPending;  
-      db.collection('pending').find().toArray((err,result) => {
-        if (err) return console.log(err)
-        locationsInPending = result
-        // res.json(result)
 
+      // query db to get the park information
+      let locationsInParks; 
+       
+      db.collection('parks').find().toArray((err,result) => {
+        console.log("/map : parks",result)
+        if (err) return console.log(err)
+        locationsInParks = result
+        console.log(locationsInParks)
+        // res.json(locationsInParks)
+        let data = JSON.stringify(locationsInParks);
+        fs.writeFileSync('student-2.json', data);
+        res.render('map.ejs', {
+          locations: locationsInParks,
+          user: req.user
       })
-      res.render('map.ejs', {
-        locations: locationsInPending
-        // messages: result
-        // user: req.user
-        // mapInfo: {
-        //   coordinates: [-71, 41]
-        // }
-      })
+      
     })
-});
+  })
+  // =========================
+  app.get('/mark', isLoggedIn, function(req, res) {
+
+    // query db to get the park information
+    let locationsInParks; 
+     
+    db.collection('parks').find({approved: true}).toArray((err,result) => {
+      if (err) return console.log(err)
+      locationsInParks = result
+      console.log("/mark : parks",locationsInParks)
+      // res.json(locationsInParks)
+      let data = JSON.stringify(locationsInParks);
+      res.send(data)    
+  })
+})
+
+  // ==================== =========================
+
+//   app.get('/map', isLoggedIn, function(req, res) {
+//     db.collection('messages').find().toArray((err, result) => {
+//       if (err) return console.log(err)
+//       // query db to get the park information
+//       let locationsInParks;  
+//       db.collection('parks').find().toArray((err,result) => {
+//         if (err) return console.log(err)
+//         locationsInParks = result
+//         // res.json(result)
+
+//       })
+//       res.render('map.ejs', {
+//         locations: locationsInParks
+//         // messages: result
+//         // user: req.user
+//         // mapInfo: {
+//         //   coordinates: [-71, 41]
+//         // }
+//       })
+//     })
+// });
 
 app.get('/map', isLoggedIn, function(req, res) {
   db.collection('messages').find().toArray((err, result) => {
     if (err) return console.log(err)
     // query db to get the park information
-    let locationsInPending;  
-    db.collection('pending').find().toArray((err,result) => {
+    let locationsInParks;  
+    db.collection('parks').find().toArray((err,result) => {
       if (err) return console.log(err)
-      locationsInPending = result
+      locationsInParks = result
       // res.json(result)
 
     })
     res.render('map.ejs', {
-      locations: locationsInPending
+      locations: locationsInParks
       // messages: result
       // user: req.user
       // mapInfo: {
       //   coordinates: [-71, 41]
       // }
     })
+    let data = JSON.stringify(locationsInParks);
+fs.writeFileSync('student-2.json', data);
   })
 });
 
@@ -190,10 +231,11 @@ app.get('/map/:mapid', isLoggedIn, function(req, res) {
 app.post('/mark', (req, res) => {
   console.log("body: ",req.body)
   const coordinatePair = {lat: req.body.lat, lng: req.body.lng}
-  db.collection('pending').save({
+  db.collection('parks').save({
     
     name: req.body.name,
     coordinates: coordinatePair,
+    approved: false,
     userId: ObjectId(req.user._id)},
     (err, result) => {
     if (err) return console.log(err)
@@ -201,6 +243,26 @@ app.post('/mark', (req, res) => {
     res.redirect('/map')
   })
 })
+
+//  Park Put COORDINATES ===============================================================
+
+app.put('/keepPark', (req, res) => {
+  
+  const parkId = req.body.id
+  console.log("approving:", parkId)
+  db.collection('parks').findOneAndUpdate({_id: ObjectId(parkId)},{
+    $set: {
+      approved: true
+    }
+  },{upsert: false},
+    (err, result) => {
+    if (err) return console.log(err)
+    console.log('saved to database')
+    // res.redirect('/map')
+    res.send("okay")
+  })
+})
+
 
 //===============================================================
     app.put('/messages', (req, res) => {
