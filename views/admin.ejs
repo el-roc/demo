@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<header>
+
+</header>
+<body>
+    <h1>hey</h1>
+    <ul class="pending">
+        <% for(var i=0; i< result.length; i++) {%>
+        
+        <li class="location">
+          <h3><%= result[i].name%></h3>
+          <label for="">Lattitude</label>
+          <section><%= result[i].coordinates.lat %></section>
+          <label for="">Longitude</label>
+          <section><%= result[i].coordinates.lng %></section>
+
+        </li>
+        <% } %>
+       
+      </ul>
+      
+      <a href="/profile" class="btn btn-default"><span class="fa fa-user"></span>To User Profile</a>
+      <a href="/map" class="btn btn-default"><span class="fa fa-user"></span>To Maps</a>
+      <a href="/favorites" class="btn btn-default"><span class="fa fa-user"></span>To User Favorites</a>
+</body>
+
+</html>

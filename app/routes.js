@@ -51,7 +51,18 @@ module.exports = function(app, passport, db, ObjectId) {
     })
     })
 });
+  // ADMIN SECTION =========================
+  app.get('/admin', isLoggedIn, function(req, res) {
+    db.collection('pending').find().toArray((err, result) => {
+      if (err) return console.log(err)
+      console.log("the pending result", result)
+      res.render('admin.ejs', {
+        result: result
+        // name: result.name,
 
+      })
+    })
+});
   // FAVORITES SECTION =========================
 
   app.get('/favorites', isLoggedIn, function(req, res) {
@@ -70,17 +81,45 @@ module.exports = function(app, passport, db, ObjectId) {
     db.collection('messages').find().toArray((err, result) => {
       if (err) return console.log(err)
       // query db to get the park information
+      let locationsInPending;  
+      db.collection('pending').find().toArray((err,result) => {
+        if (err) return console.log(err)
+        locationsInPending = result
+        // res.json(result)
+
+      })
       res.render('map.ejs', {
-        // user : req.user,
+        locations: locationsInPending
         // messages: result
-        user: req.user,
-        mapInfo: {
-          coordinates: [-71, 41]
-        }
+        // user: req.user
+        // mapInfo: {
+        //   coordinates: [-71, 41]
+        // }
       })
     })
 });
 
+app.get('/map', isLoggedIn, function(req, res) {
+  db.collection('messages').find().toArray((err, result) => {
+    if (err) return console.log(err)
+    // query db to get the park information
+    let locationsInPending;  
+    db.collection('pending').find().toArray((err,result) => {
+      if (err) return console.log(err)
+      locationsInPending = result
+      // res.json(result)
+
+    })
+    res.render('map.ejs', {
+      locations: locationsInPending
+      // messages: result
+      // user: req.user
+      // mapInfo: {
+      //   coordinates: [-71, 41]
+      // }
+    })
+  })
+});
 
 app.get('/map/:mapid', isLoggedIn, function(req, res) {
   db.collection('messages').find().toArray((err, result) => {
@@ -146,6 +185,24 @@ app.get('/map/:mapid', isLoggedIn, function(req, res) {
       })
     })
 
+// MAP POST COORDINATES ===============================================================
+
+app.post('/mark', (req, res) => {
+  console.log("body: ",req.body)
+  const coordinatePair = {lat: req.body.lat, lng: req.body.lng}
+  db.collection('pending').save({
+    
+    name: req.body.name,
+    coordinates: coordinatePair,
+    userId: ObjectId(req.user._id)},
+    (err, result) => {
+    if (err) return console.log(err)
+    console.log('saved to database')
+    res.redirect('/map')
+  })
+})
+
+//===============================================================
     app.put('/messages', (req, res) => {
       db.collection('messages')
       .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {

@@ -16,9 +16,15 @@
 </head>
 
 <body>
-  <%= mapInfo.coordinates[0] %>
-  <div id="mapid" style="width: 100%; height: 400px;"></div>
-
+  <div class="location-data" style="visibility:hidden"><%= locations %></div>
+  <div id="mapid" style="width: 65%; height: 400px;"></div>
+  <form action="/mark" method="POST">
+    <input class="name-of-park" name="name" type="text" placeholder="Name of Park">
+    <input class="lat" name="lat" value="" type="text" placeholder="Lattitude">
+    <input class="lng" name="lng" value="" type="text" placeholder="Longintude">
+    <input class="submit" type="submit">
+  </form>
+    <button class="editable">Edit Map</button>
     <a href="/parks" class="btn btn-default"><span class="fa fa-user"></span>To Parks Forum</a>
     <a href="/profile" class="btn btn-default"><span class="fa fa-user"></span>To Profile</a>
     <a href="/favorites" class="btn btn-default"><span class="fa fa-user"></span>To User Favorites</a>
