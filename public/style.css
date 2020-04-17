@@ -36,3 +36,33 @@ div .jumbotron.text-center{
 div.well{
   color:black;
 }
+#mapid{
+  margin:0;
+  float: left;
+  display: inline-block;  
+  margin-left: 5%;
+}
+.editable{
+  /* float: left;
+  display: inline-block; */
+  margin-left: 44%;
+  padding: 2%;
+}
+.mapBtn{
+  display: block;
+  float:right;
+  width: 25%;
+  margin-bottom: 5rem;
+  margin-right: 2%;
+  
+}
+.mapFormPt2{
+  /* margin-left: 33%; */
+  text-align: center;
+}
+.mapTitle{
+  text-decoration: underline;
+}
+.words{
+  text-align: center;
+}
