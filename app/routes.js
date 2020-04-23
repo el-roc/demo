@@ -1,6 +1,20 @@
-module.exports = function(app, passport, db, ObjectId) {
+module.exports = function(app, passport, db, multer, ObjectId) {
 
 // normal routes ===============================================================
+    
+// Image Upload Code =========================================================================
+
+var storage = multer.diskStorage({
+
+  destination: (req, file, cb) => {   
+    cb(null, 'public/images/uploads')
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + '-' + Date.now() + ".png")  
+  }
+});
+var upload = multer({storage: storage}); //upload img to destination 'storage'
+
 
     // show the home page (will also have our login links)
     app.get('/', function(req, res) {
@@ -40,7 +54,7 @@ module.exports = function(app, passport, db, ObjectId) {
       if (err) return console.log(err)
       // console.log(result)
       db.collection('parks').find({'_id': parkId}).toArray((err, parkResult)=>{
-        console.log(parkResult)
+        console.error("this is park result", parkResult)
         console.log(parkResult[0].name)
       if (err) return console.log(err)
       res.render('individualpark.ejs', {
@@ -210,7 +224,8 @@ app.get('/map/:mapid', isLoggedIn, function(req, res) {
     //   })
     // })
 
-    app.post('/messages', (req, res) => {
+    app.post('/messages', upload.single('file-to-upload'), (req, res) => {
+      
       db.collection('messages').save({
         name: req.body.name,
         msg: req.body.msg,
@@ -218,13 +233,23 @@ app.get('/map/:mapid', isLoggedIn, function(req, res) {
         thumbUp: 0, thumbDown:0,
         favorite: "(Click to Save)", 
         parkId: ObjectId(req.body.individualId),
-      userId: ObjectId(req.user._id)},
+        userId: ObjectId(req.user._id),
+        imgPath: req.file ? 'images/uploads/' + req.file.filename : '' },
         (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/profile')
       })
     })
+// POST IMAGES =======================================================================
+    // app.post('/messages', upload.single('file-to-upload'), (req, res, next) => {  //one picture to post   //next????
+    //   let uId = ObjectId(req.session.passport.user) // uId === the individual
+    //   db.collection('messages').save({imgPath: 'images/uploads/' + req.file.filename}, (err, result) => {
+    //     if (err) return console.log(err)
+    //     console.log('saved to database')
+    //     res.redirect('/individualpark')
+    //   })
+    // });
 
 // MAP POST COORDINATES ===============================================================
 
