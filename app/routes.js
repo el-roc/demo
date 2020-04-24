@@ -23,7 +23,8 @@ var upload = multer({storage: storage}); //upload img to destination 'storage'
 
     // USER SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
-        db.collection('messages').find().toArray((err, result) => {
+        let uId = ObjectId(req.user._id)  
+        db.collection('messages').find({'userId': uId}).toArray((err, result) => {
           if (err) return console.log(err)
           res.render('profile.ejs', {
             user : req.user,
