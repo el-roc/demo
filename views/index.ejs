@@ -5,27 +5,40 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
+    <!-- <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script> -->
 </head>
 <body>
 
 <div class="container">
 
-    <div class="jumbotron text-center">
+    <header class="text-center">
         <h1>Boston: Parks and Recreation</h2>
-        <img src="img/aarboretum.jpeg" alt="21 Savage Profile Photo">
+         <nav>
+            <section>
+            <h2>Already a Member? Login</h2>
+            <a href="/login" class="btn btn-warning btn-lg"><span class="fa fa-user"></span>Login</a>
+        </section>
+        <section>
             <h2>Join Our Community Today!</h2>
-        <p>Login or Signup:</p>
+            <a href="/signup" class="btn btn-warning btn-lg"><span class="fa fa-user"></span>Signup</a>
+        </section>
 
-        <a href="/login" class="btn btn-default"><span class="fa fa-user"></span>Login</a>
-        <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span>Signup</a>
-        
+            
+        </nav>
 
-    </div>
+        </header>
+
     <!-- <div>
         <a href="/forum" class="btn btn-default"><span class="fa fa-user"></span>To Forum</a>
         <a href="/maps" class="btn btn-default"><span class="fa fa-user"></span>To Maps</a>
     </div> -->
-    
+    <section class="indexImg"><img  src="img/bcommon.jpeg" alt=""></section>
+    <section class="text-center aboutMe jumbotron"> 
+        <h3>About This Site</h3> 
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid delectus, sunt, doloribus ab quod non optio, voluptatibus distinctio magni vero eaque placeat corrupti minus. Iste blanditiis labore non fugit minima!</p> 
+    </section>
 </div>
+
+<script src="mapmain.js"></script>
 </body>
 </html>

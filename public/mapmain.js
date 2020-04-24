@@ -101,7 +101,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 //         .setContent("You clicked the map at " + e.latlng.toString())
 //         .openOn(mymap);
 // }
-
+if(toggleEdit != undefined){
 toggleEdit.addEventListener("click", (e) =>{
     e.preventDefault()
     canPlot = !canPlot
@@ -111,7 +111,7 @@ toggleEdit.addEventListener("click", (e) =>{
         toggleEdit.textContent = "Edit Map"
     }
 })
-
+}
 let newAddr = { }
 // let newVar = e.latlng
 function onMapClick(e) {
