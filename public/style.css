@@ -1,18 +1,19 @@
 body{
   word-wrap:break-word;
-  color: #337CA0;
+  /* color: #337CA0; */
+  color: white;
   background-color: #7BC950;
 }
 img{
   height: 200px;
 }
-#map{
+/* #map{
   height: 444px;
   width: 100%;
   border: 2px solid black;
   background-image: url(img/mapboston.png);
   background-size: cover;
-}
+} */
 div .container2{
   align-content: center;
 }
@@ -91,12 +92,54 @@ div.well{
   
 }
 .mapFormPt2{
-  /* margin-left: 33%; */
   text-align: center;
 }
 .mapTitle{
   text-decoration: underline;
+  margin-left: 33px auto;
+
 }
 .words{
   text-align: center;
+}
+div.container.loginSignup{
+  background-color: #8064A2;
+  border-radius: 33px;
+  margin: 175px 0 0 0;
+  box-shadow: rgb(153, 120, 170);
+  opacity: 88%;
+}
+/* div.container.loginSignupH1{
+  text-align: center;
+} */
+li .message.listStyle{
+  border-bottom: 2px solid white;
+}
+
+@media only screen and (max-width:375px){
+  .btn-warning{
+    font-size: .9rem;
+    text-align: left;
+    width: 20%;
+  }
+  .a .btn .btn-warning .btn-lg .index{
+    width: 30%;
+  }
+  .indexImg{
+    height: auto;
+  }
+  .indexImg img{
+    width: 100%;
+    height:222px;
+  }
+  .mapFormPt2{
+    /* display: flex;
+    flex-flow: column;
+    width: 100%; */
+    /* margin: 0 11em 3em 8em; */
+  }
+  #mapSubmitBtn{
+    /* width: 22%; */
+    margin: 5px 5px 5px 5px;
+  }
 }

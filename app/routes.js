@@ -33,17 +33,6 @@ var upload = multer({storage: storage}); //upload img to destination 'storage'
         })
     });
 
-    // PARKS SECTION =========================
-
-    app.get('/parks', isLoggedIn, function(req, res) {
-      db.collection('messages').find().toArray((err, result) => {
-        if (err) return console.log(err)
-        res.render('parks.ejs', {
-          user : req.user,
-          messages: result
-        })
-      })
-  });
 
   // INDIVIDUAL PARKS SECTION =========================
   
@@ -191,15 +180,15 @@ app.get('/map/:mapid', isLoggedIn, function(req, res) {
   })
 });
 
-  app.get('/new-map', isLoggedIn, function(req, res) {
-    db.collection('messages').find().toArray((err, result) => {
-      if (err) return console.log(err)
-      res.render('new-map.ejs', {
-        // user : req.user,
-        // messages: result
-      })
-    })
-  });
+  // app.get('/new-map', isLoggedIn, function(req, res) {
+  //   db.collection('messages').find().toArray((err, result) => {
+  //     if (err) return console.log(err)
+  //     res.render('new-map.ejs', {
+  //       // user : req.user,
+  //       // messages: result
+  //     })
+  //   })
+  // });
 
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {
@@ -348,6 +337,7 @@ app.put('/keepPark', (req, res) => {
         res.send('Message deleted!')
       })
     })
+    
 
 // =============================================================================
 // AUTHENTICATE (FIRST LOGIN) ==================================================

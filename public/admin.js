@@ -33,6 +33,7 @@ Array.from(keepBtn).forEach(function(element) {
     });
 });
 
+
 // Array.from(thumbUp).forEach(function(element) {
 //     element.addEventListener('click', function(){
 //       const name = this.parentNode.parentNode.childNodes[1].innerText

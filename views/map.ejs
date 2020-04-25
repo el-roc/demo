@@ -17,39 +17,30 @@
 
 <body>
   <!-- <p><%= locations %></p> -->
-  <h1 class="mapTitle">Find a Park Location</h1>
+  <h1 class="mapTitle">Find a Park Location</h1><i class="fa fa-map-signs"></i>
   <div class="page-header text-center">
-    <!-- <h1></h1> -->
-    <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    <a href="/logout" class="btn btn btn-warning btn-lg btn-sm">Logout</a>
   </div>
 
-  <h3 class="words">Click Edit Map To Start</h3>
-  <button class="editable">Edit Map</button>
+  <h3 class="words">Click On Mark Map Button To Start</h3>
+  <button class="editable btn btn-warning btn-lg">Mark Map</button>
   <h4 class="words">Submit New Location</h4>
   <form action="/mark" method="POST" class="mapFormPt2">
     <input class="name-of-park" name="name" type="text" placeholder="Name of Park">
-    <input class="lat" name="lat" value="" type="text" placeholder="Lattitude">
-    <input class="lng" name="lng" value="" type="text" placeholder="Longintude">
-    <input class="submit" type="submit">
+    <input class="lat" name="lat" value="" type="text" placeholder="Latitude">
+    <input class="lng" name="lng" value="" type="text" placeholder="Longitude">
+    <input id="mapSubmitBtn" class="submit btn btn-warning btn-lg mapBtn" type="submit">
   </form>
   
   <div class="location-data" style="visibility:hidden"><%= locations %></div>
   <div id="mapid" style="width: 65%; height: 400px;"></div>
-  
-  <!-- <form action="/mark" method="POST" class="mapFormPt2">
-    <input class="name-of-park" name="name" type="text" placeholder="Name of Park">
-    <input class="lat" name="lat" value="" type="text" placeholder="Lattitude">
-    <input class="lng" name="lng" value="" type="text" placeholder="Longintude">
-    <input class="submit" type="submit">
-  </form> -->
    
-    <a href="/parks" class="btn btn-default mapBtn"><span class="fa fa-user"></span>To Parks Forum</a>
-    <a href="/profile" class="btn btn-default mapBtn"><span class="fa fa-user"></span>To Profile</a>
-    <a href="/favorites" class="btn btn-default mapBtn"><span class="fa fa-user"></span>To User Favorites</a>
+    <a href="/profile" class="btn btn btn-warning btn-lg mapBtn"><span class="fa fa-user"></span>Profile</a>
+    <a href="/favorites" class="btn btn btn-warning btn-lg mapBtn"><span class="fa fa-user"></span>User Favorites</a>
     <%
     console.log("is admin?",user.local, user.local.admin)
     if(user.local.admin){ %>
-    <a href="/admin" class="btn btn-default mapBtn"><span class="fa fa-user"></span>To Admin Page</a>
+    <a href="/admin" class="btn btn btn-warning btn-lg mapBtn"><span class="fa fa-user"></span>Admin Page</a>
     <%}else{
       console.log("nope!:")
     } %> 

@@ -18,7 +18,7 @@ MongoDB
 
 -Implement a Map API that can add locations from the DB. 
     Also be able to pin those locations to the map
-    via lattitude and longitude
+    via latitude and longitude
 -Update the POST req so they define the correct objs to database
 -Make individual query paramater ID's for the different users profiles and favorites pages 
     -These pages will have the routes /profile/:id && /favorite/:id

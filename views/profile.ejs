@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-  <link rel="stylesheet" href="style1.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -20,13 +20,13 @@
 
     <div class="page-header text-center">
       <h1>User Profile Page</h1>
-      <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+      <a href="/logout" class="btn btn-warning btn-sm">Logout</a>
     </div>
 
     <div class="row">
 
       <!-- LOCAL INFORMATION -->
-      <div class="col-sm-6">
+      <!-- <div class="col-sm-6">
         <div class="well">
           <h3><span class="fa fa-user"></span> Local</h3>
 
@@ -43,13 +43,13 @@
           <% } %>
 
         </div>
-      </div>
+      </div> -->
       <div class="col-sm-6">
         <h3>Messages</h3>
         <ul class="messages">
           <% for(var i=0; i< messages.length; i++) {%>
           <!-- <% if (user.local.email == messages[i].name) { %> -->
-          <li class="message">
+          <li class="message listStyle">
             <span><%= messages[i].name%></span>
             <span><%= messages[i].msg %></span>
             <span><%= messages[i].workout %></span>
@@ -75,11 +75,10 @@
 
       </div>
       <!-- <% } %> -->
-        <a href="/parks" class="btn btn-default"><span class="fa fa-user"></span>To Parks Forum</a>
-        <!-- <a href="/map" class="btn btn-default"><span class="fa fa-user"></span>To Maps</a> -->
-        <a href="/favorites" class="btn btn-default"><span class="fa fa-user"></span>To User Favorites</a>
-        <a href="/map" class="btn btn-default"><span class="fa fa-user"></span>To New Map</a>
-        <!-- <a href="/new-map" class="btn btn-default"><span class="fa fa-user"></span>To API Map</a> -->
+        <a href="/map" class="btn btn-warning"><span class="fa fa-user"></span>To Maps</a>
+        <a href="/favorites" class="btn btn-warning"><span class="fa fa-user"></span>To User Favorites</a>
+        
+       
         
     </div>
     <script src="https://kit.fontawesome.com/077191d827.js" crossorigin="anonymous"></script>
