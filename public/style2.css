@@ -1,8 +1,8 @@
 body{
     word-wrap:break-word;
-    /* color: #337CA0; */
-    color: #337CA0;
-    background-color: #7BC950;
+
+    color: rgb(231, 231, 231);
+    background-color: #679289;
   }
   #login, #signup{
       color: white;
@@ -47,7 +47,7 @@ header nav section{
     background-color: #8064A2;
     border-radius: 33px;
     margin: 175px auto;
-    box-shadow: rgb(153, 120, 170);
+    box-shadow: 5px 6px 26px black;
     opacity: 88%;
   }
   #mapSubmitBtn{
@@ -128,5 +128,5 @@ input.btn-warning{
     color: #337CA0;
 }
 .index{
-    color: #337CA0;
+    color: rgb(231, 231, 231);
 }

@@ -1,9 +1,9 @@
 ![img](mappage.png)
 
 
-## Demo Day Skeleton
+## Demo Day Project
 
-Parks and Recreation App
+Boston Parks and Recreation App
 Find Local parks added by users as well as workouts that are tailoored for the locations. Save favorite Workouts and Park Locations to a Favorite Page.  
 
 ## Tech Used
@@ -13,9 +13,7 @@ HTML
 CSS
 Express
 MongoDB
-
-## left
-media query
+Open-Map API
 
 
 
