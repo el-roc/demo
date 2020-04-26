@@ -1,10 +1,101 @@
-body{
-    background-image: url(img/lighthouse.jpeg);
-    background-size: cover;
+header nav section{
+    width: 30%;
+    display: inline-block;
+    margin: 20px auto;
+  }
+  h1{
+    text-align: center;
+    
+    display: inline-block;
+    font-size: 4rem;
+  }
+  header h2{
+    font-size:2.5rem;
+  }
+  
+  .indexImg{
+    width:65%;
+    height:400px;
+    margin: 50px auto;
+  }
+  .indexImg img{
+    width: 100%;
+    height: 100%;
+  }
+  div.container.loginSignup{
+    background-color: #8064A2;
+    border-radius: 33px;
+    margin: 175px auto;
+    box-shadow: rgb(153, 120, 170);
+    opacity: 88%;
+  }
+  #mapSubmitBtn{
+    margin:0 40%;
+    width: 20%;
+  }
+  /* #mapId{
+      padding:0 10%;
+  } */
+  .buttonOnMaps{
+      width: 80%;
+      margin: 0 auto;
+      margin-top: 44px;
+  }
+  .buttonOnMaps a{
+      width: 30%;
+      margin-left: 13.5%;
+  }
+  #mapCoordinateForm,
+  section#mapInputs{
+    margin: 0 12.5%;
+  }
+  section#mapInputs input{
+    width: 32.5%;
+  }
+  /* li.message.listStyle{
+    margin:22px auto;
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+  } */
+  li{
+      /* margin-bottom: 20px; */
+      border-bottom: 1px solid black;
+      width: 40%;
+      margin: 0 auto 20px;
+      min-height: 100px;  
+      
+  }
+  li.message.listStyle img{
+    margin-top:22px;
+    height: 200px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .user{
+      font-weight: bold;
+      font-size: 1.8rem;
+  }
+  .messagePost{
+    /* font-weight: bold; */
+    font-size: 1.5rem;
+    /* border-right: 1px solid black; */
 }
-/* div .col-sm-6{
-    background-color: white;
-} */
-#whiteSpace{
-    background-color: white;
+.exercise{
+    /* font-weight: bold; */
+    font-size: 1.5rem;
+}
+h5{
+    border-bottom: 1px solid black;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+}
+ul{
+    margin-top: 20px;
+}
+
+input[type="file"]{
+    display: inline;
+}
+.hide{
+    display: none;
 }

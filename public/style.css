@@ -105,17 +105,38 @@ div.well{
 div.container.loginSignup{
   background-color: #8064A2;
   border-radius: 33px;
-  margin: 175px 0 0 0;
+  margin: 175px auto;
   box-shadow: rgb(153, 120, 170);
   opacity: 88%;
 }
 /* div.container.loginSignupH1{
   text-align: center;
 } */
-li .message.listStyle{
+/* li.message.listStyle{
   border-bottom: 2px solid white;
+} */
+a{
+  color: rgb(3, 211, 248);
 }
-
+li.message.listStyle{
+  margin:22px auto;
+  border-bottom: 1px solid white;
+  padding-bottom: 10px;
+}
+li.message.listStyle img{
+  margin-top:22px;
+}
+input .message .exercise{
+  height:125;
+  width: 33%;
+}
+.col-sm-6{
+  display: flex;
+  justify-content: center;
+}
+h3{
+  text-align: center;
+}
 @media only screen and (max-width:375px){
   .btn-warning{
     font-size: .9rem;

@@ -21,6 +21,7 @@ Array.from(thumbUp).forEach(function(element) {
         const name = this.parentNode.parentNode.childNodes[1].innerText
         const msg = this.parentNode.parentNode.childNodes[3].innerText
         const thumbUp = parseFloat(this.parentNode.parentNode.childNodes[9].innerText)
+        console.log(msg)
         fetch('messages', {
           method: 'put',
           headers: {'Content-Type': 'application/json'},

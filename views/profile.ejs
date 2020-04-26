@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style2.css">
 </head>
 
 <body>
@@ -23,7 +23,7 @@
       <a href="/logout" class="btn btn-warning btn-sm">Logout</a>
     </div>
 
-    <div class="row">
+    <!-- <div class="row"> -->
 
       <!-- LOCAL INFORMATION -->
       <!-- <div class="col-sm-6">
@@ -44,24 +44,32 @@
 
         </div>
       </div> -->
-      <div class="col-sm-6">
+      <div class="col-sm-12 text-center">
         <h3>Messages</h3>
+        <a href="/map" class="btn btn-warning">Maps Page</a>
+        <!-- <a href="/favorites" class="btn btn-warning"><span class="fa fa-user"></span>To User Favorites</a> -->
         <ul class="messages">
           <% for(var i=0; i< messages.length; i++) {%>
           <!-- <% if (user.local.email == messages[i].name) { %> -->
           <li class="message listStyle">
-            <span><%= messages[i].name%></span>
-            <span><%= messages[i].msg %></span>
-            <span><%= messages[i].workout %></span>
-            <span><%= messages[i].favorite %></span>
+            <span class="user"><%= messages[i].name%></span>
+            <span class="messagePost"><%= messages[i].msg %></span>
+            <span class="exercise"><%= messages[i].workout %></span>
+            <span class="hide"><%= messages[i].favorite %></span>
             <span><%= messages[i].thumbUp -= messages[i].thumbDown %></span>
             <span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
             <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
             <span><i class="fa fa-trash" aria-hidden="true"></i></span>
-            <img src=<%= messages[i].imgPath %> alt="">
+            <% if(messages[i].imgPath){ %>
+              <section> 
+                <img src=<%= messages[i].imgPath %> alt="">
+              </section>
+             <% } %>
           </li>
-          <!-- <% } %> -->
           <% } %>
+          
+          <!-- <% } %> -->
+          
         </ul>
 
         <!-- <h2>Park Information</h2> -->
@@ -75,8 +83,7 @@
 
       </div>
       <!-- <% } %> -->
-        <a href="/map" class="btn btn-warning"><span class="fa fa-user"></span>To Maps</a>
-        <a href="/favorites" class="btn btn-warning"><span class="fa fa-user"></span>To User Favorites</a>
+        
         
        
         
