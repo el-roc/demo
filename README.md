@@ -1,16 +1,16 @@
-![img](mappage.png)
+![img](the-map.png)
 
 
-## Demo Day Project
+## Boston Parks and Recreation
 
-Boston Parks and Recreation App
-Find Local parks added by users as well as workouts that are tailoored for the locations. Save favorite Workouts and Park Locations to a Favorite Page.  
+Join the community and find local parks added by users as well as workouts that are tailoored for the locations. Save favorite Workouts to the Favorite Page  
 
 ## Tech Used
 
 JavaScript 
 HTML
 CSS
+Node.js
 Express
 MongoDB
 Open-Map API
