@@ -70,7 +70,7 @@ var upload = multer({storage: storage}); //upload img to destination 'storage'
   // FAVORITES SECTION =========================
 
   app.get('/favorites', isLoggedIn, function(req, res) {
-    db.collection('messages').find().toArray((err, result) => {
+    db.collection('messages').find({}).toArray((err, result) => {
       if (err) return console.log(err)
       res.render('favorites.ejs', {
         user : req.user,

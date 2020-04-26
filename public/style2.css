@@ -1,3 +1,24 @@
+body{
+    word-wrap:break-word;
+    /* color: #337CA0; */
+    color: #337CA0;
+    background-color: #7BC950;
+  }
+  #login, #signup{
+      color: white;
+  }
+  .aboutMe{
+    font-size: 2rem;
+    /* height: 250px; */
+    /* width: 70%; */
+    /* border-radius: 10%; */
+    padding: 1rem;
+    margin: 0 auto;
+    background-color: #f0ad4e;
+  }
+  .btn{
+      color: #337CA0;
+  }
 header nav section{
     width: 30%;
     display: inline-block;
@@ -32,6 +53,7 @@ header nav section{
   #mapSubmitBtn{
     margin:0 40%;
     width: 20%;
+    color: #337CA0;
   }
   /* #mapId{
       padding:0 10%;
@@ -63,7 +85,7 @@ header nav section{
       width: 40%;
       margin: 0 auto 20px;
       min-height: 100px;  
-      
+      list-style: none;
   }
   li.message.listStyle img{
     margin-top:22px;
@@ -96,6 +118,15 @@ ul{
 input[type="file"]{
     display: inline;
 }
-.hide{
+/* .hide{
     display: none;
+} */
+input.btn-warning{
+    color: #337CA0;
+}
+.btn-warning{
+    color: #337CA0;
+}
+.index{
+    color: #337CA0;
 }

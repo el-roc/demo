@@ -21,6 +21,13 @@
   <header class="page-header text-center">
     <h1 class="mapTitle text-center">Find a Park Location</h1>
     <section></section>
+    <%
+    console.log("is admin?",user.local, user.local.admin)
+    if(user.local.admin){ %>
+    <a href="/admin" class="btn btn btn-warning btn-sm mapBtn">Admin Page</a>
+    <%}else{
+      console.log("nope!:")
+    } %> 
     <a href="/logout" class="btn btn btn-warning btn-lg btn-sm">Logout</a>
   </section>
   </header>
@@ -42,14 +49,8 @@
   <div id="mapid" style="width: 80%; height: 400px; margin:0 10%;"></div>
    <section class="buttonOnMaps">
     <a href="/profile" class="btn btn btn-warning btn-lg mapBtn"><span class="fa fa-user"></span>Profile</a>
-    <!-- <a href="/favorites" class="btn btn btn-warning btn-lg mapBtn"><span class="fa fa-user"></span>User Favorites</a> -->
-    <%
-    console.log("is admin?",user.local, user.local.admin)
-    if(user.local.admin){ %>
-    <a href="/admin" class="btn btn btn-warning btn-lg mapBtn"><span class="fa fa-user"></span>Admin Page</a>
-    <%}else{
-      console.log("nope!:")
-    } %> 
+    <a href="/favorites" class="btn btn btn-warning btn-lg mapBtn"><span class="fa fa-user"></span>Users Favorites</a>
+   
   </section>
     <script src="https://kit.fontawesome.com/077191d827.js" crossorigin="anonymous"></script>
     <script src="mapmain.js"></script>
