@@ -130,3 +130,29 @@ input.btn-warning{
 .index{
     color: rgb(231, 231, 231);
 }
+.editable{
+  display: block;
+  margin-left: 45.5%;
+}
+@media only screen and (max-width:500px){
+  .btn-warning{
+    font-size: .9rem;
+    text-align: left;
+    width: auto;
+  }
+  .a .btn .btn-warning .btn-lg .index{
+    width: 30%;
+  }
+  .indexImg{
+    height: auto;
+  }
+  .indexImg img{
+    width: 100%;
+    height:222px;
+  }
+  
+  #mapSubmitBtn{
+    /* width: 22%; */
+    margin: 5px 5px 5px 5px;
+  }
+}
