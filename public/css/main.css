@@ -378,6 +378,9 @@ iframe {
   visibility: visible;
   opacity: 1;
 }
+.theCopyright{
+  color:white;
+}
 
 @media (max-width: 992px) {
   .alert-validate::before {
